@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url('custom-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #9b59b6;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.buttons .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white; /* Garis pinggir putih */
+    border-radius: 25px; /* Membuat tombol berbentuk oval */
+    background: transparent; /* Tombol transparan */
+    transition: all 0.3s ease; /* Animasi hover */
+}
+
+.buttons .btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Warna putih semi-transparan saat hover */
+    color: white; /* Tetap putih saat hover */
+}
+
+
+.btn.email:hover {
+    background: #5a6268;
+}
+
+.already a {
+    color: #9b59b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.already a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+footer a img {
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+    transition: transform 0.2s ease;
+}
+
+footer a img:hover {
+    transform: scale(1.2);
+}
