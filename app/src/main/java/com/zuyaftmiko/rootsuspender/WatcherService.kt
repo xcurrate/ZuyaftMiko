@@ -1,8 +1,8 @@
 package com.zuyaftmiko.rootsuspender
 
 import android.app.Service
-import android.app.usage.UsageStatsManager
 import android.content.Intent
+import android.app.usage.UsageStatsManager
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
@@ -10,29 +10,27 @@ import android.os.Looper
 class WatcherService : Service() {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var store: ConfigStore
-    private var triggerActive = false
+    private var lastHandledPackage: String? = null
 
     private val watcher = object : Runnable {
         override fun run() {
             val config = store.load()
             val foreground = getForegroundPackage()
-            val inTrigger = foreground != null && config.triggerApps.contains(foreground)
 
             RootOps.runCommands(
                 RootOps.buildSuspendCommands(config.suspendAlways) +
                     RootOps.buildForceStopCommands(config.forceAlways)
             )
 
-            if (inTrigger && !triggerActive) {
+            if (foreground != null && config.triggerApps.contains(foreground) && foreground != lastHandledPackage) {
                 val cmds = RootOps.buildSuspendCommands(config.suspendOnTrigger) +
                     RootOps.buildForceStopCommands(config.forceOnTrigger)
                 RootOps.runCommands(cmds)
-                triggerActive = true
+                lastHandledPackage = foreground
             }
 
-            if (!inTrigger && triggerActive) {
-                RootOps.runCommands(RootOps.buildUnsuspendCommands(config.unsuspendOnTriggerExit))
-                triggerActive = false
+            if (foreground == null || !config.triggerApps.contains(foreground)) {
+                lastHandledPackage = null
             }
 
             handler.postDelayed(this, 3000)

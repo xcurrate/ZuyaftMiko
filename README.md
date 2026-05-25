@@ -5,7 +5,6 @@ Aplikasi Android untuk:
 - force stop beberapa aplikasi (manual & periodik)
 - suspend beberapa aplikasi saat aplikasi trigger terbuka
 - force stop beberapa aplikasi saat aplikasi trigger terbuka
-- otomatis **unsuspend** beberapa aplikasi saat trigger app ditutup / tidak lagi aktif
 
 ## Cara pakai singkat
 1. Install APK.
@@ -84,8 +83,3 @@ Lalu commit file wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
 - Pastikan package yang disuspend bukan aplikasi sistem kritikal.
 - Beberapa ROM butuh Magisk + grant root manual ke app.
 - Jika command gagal, cek root shell: `su -c id`.
-
-
-## Konsep Trigger Otomatis
-- Saat app trigger terdeteksi berjalan di foreground: daftar `Suspend saat trigger aktif` + `Force-stop saat trigger aktif` dieksekusi.
-- Saat app trigger ditutup / pindah ke app lain: daftar `Auto unsuspend saat trigger ditutup` dieksekusi otomatis dengan `pm unsuspend`.

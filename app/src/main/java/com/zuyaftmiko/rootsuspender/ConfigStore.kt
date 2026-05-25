@@ -11,7 +11,6 @@ class ConfigStore(context: Context) {
             .putString("forceAlways", config.forceAlways.joinToString("\n"))
             .putString("triggerApps", config.triggerApps.joinToString("\n"))
             .putString("suspendOnTrigger", config.suspendOnTrigger.joinToString("\n"))
-            .putString("unsuspendOnTriggerExit", config.unsuspendOnTriggerExit.joinToString("\n"))
             .putString("forceOnTrigger", config.forceOnTrigger.joinToString("\n"))
             .apply()
     }
@@ -21,7 +20,6 @@ class ConfigStore(context: Context) {
         forceAlways = prefs.getString("forceAlways", "").toList(),
         triggerApps = prefs.getString("triggerApps", "").toList(),
         suspendOnTrigger = prefs.getString("suspendOnTrigger", "").toList(),
-        unsuspendOnTriggerExit = prefs.getString("unsuspendOnTriggerExit", "").toList(),
         forceOnTrigger = prefs.getString("forceOnTrigger", "").toList()
     )
 
@@ -38,6 +36,5 @@ data class WatchConfig(
     val forceAlways: Set<String>,
     val triggerApps: Set<String>,
     val suspendOnTrigger: Set<String>,
-    val unsuspendOnTriggerExit: Set<String>,
     val forceOnTrigger: Set<String>
 )

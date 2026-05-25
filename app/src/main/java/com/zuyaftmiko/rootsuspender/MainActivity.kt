@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val etForceAlways = findViewById<EditText>(R.id.etForceAlways)
         val etTriggerApps = findViewById<EditText>(R.id.etTriggerApps)
         val etSuspendOnTrigger = findViewById<EditText>(R.id.etSuspendOnTrigger)
-        val etUnsuspendOnExit = findViewById<EditText>(R.id.etUnsuspendOnExit)
         val etForceOnTrigger = findViewById<EditText>(R.id.etForceOnTrigger)
         val tvLog = findViewById<TextView>(R.id.tvLog)
 
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         etForceAlways.setText(loaded.forceAlways.joinToString("\n"))
         etTriggerApps.setText(loaded.triggerApps.joinToString("\n"))
         etSuspendOnTrigger.setText(loaded.suspendOnTrigger.joinToString("\n"))
-        etUnsuspendOnExit.setText(loaded.unsuspendOnTriggerExit.joinToString("\n"))
         etForceOnTrigger.setText(loaded.forceOnTrigger.joinToString("\n"))
 
         fun readConfig(): WatchConfig {
@@ -40,7 +38,6 @@ class MainActivity : AppCompatActivity() {
                 forceAlways = etForceAlways.text.toString().toSetLines(),
                 triggerApps = etTriggerApps.text.toString().toSetLines(),
                 suspendOnTrigger = etSuspendOnTrigger.text.toString().toSetLines(),
-                unsuspendOnTriggerExit = etUnsuspendOnExit.text.toString().toSetLines(),
                 forceOnTrigger = etForceOnTrigger.text.toString().toSetLines()
             )
             store.save(config)
