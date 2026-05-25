@@ -65,3 +65,9 @@ data class RootCommandResult(
     val stdout: String,
     val stderr: String
 )
+    fun buildSuspendCommands(packages: Set<String>): List<String> =
+        packages.map { "pm suspend $it" }
+
+    fun buildForceStopCommands(packages: Set<String>): List<String> =
+        packages.map { "am force-stop $it" }
+}
