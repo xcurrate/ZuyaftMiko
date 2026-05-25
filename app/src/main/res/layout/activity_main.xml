@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:padding="16dp">
 
     <LinearLayout
@@ -138,80 +136,6 @@
                 android:layout_marginTop="8dp"
                 android:text="Buka Permission Usage Access" />
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Daftar package (pisah baris)" />
-
-        <EditText
-            android:id="@+id/etSuspendAlways"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="top"
-            android:hint="com.instagram.android"
-            android:inputType="textMultiLine" />
-
-        <EditText
-            android:id="@+id/etForceAlways"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="top"
-            android:hint="Force stop selalu"
-            android:inputType="textMultiLine" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Trigger app dibuka" />
-
-        <EditText
-            android:id="@+id/etTriggerApps"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="top"
-            android:hint="com.mobile.legends"
-            android:inputType="textMultiLine" />
-
-        <EditText
-            android:id="@+id/etSuspendOnTrigger"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="top"
-            android:hint="Suspend saat trigger aktif"
-            android:inputType="textMultiLine" />
-
-        <EditText
-            android:id="@+id/etForceOnTrigger"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:gravity="top"
-            android:hint="Force stop saat trigger aktif"
-            android:inputType="textMultiLine" />
-
-        <Button
-            android:id="@+id/btnRunNow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jalankan Sekarang" />
-
-        <Button
-            android:id="@+id/btnStartWatcher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Start Watcher" />
-
-        <Button
-            android:id="@+id/btnStopWatcher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Stop Watcher" />
-
-        <Button
-            android:id="@+id/btnUsageAccess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Buka Permission Usage Access" />
 
         <TextView
             android:id="@+id/tvLog"
@@ -221,8 +145,6 @@
             android:padding="10dp"
             android:text="Log..."
             android:textSize="13sp" />
-            android:layout_marginTop="16dp"
-            android:text="Log..." />
 
     </LinearLayout>
 </ScrollView>
