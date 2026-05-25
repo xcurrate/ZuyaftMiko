@@ -1,4 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -8,6 +12,132 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selalu dijalankan (manual / periodik)"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etSuspendAlways"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="top"
+                    android:hint="Suspend selalu (1 package per baris)"
+                    android:inputType="textMultiLine" />
+
+                <EditText
+                    android:id="@+id/etForceAlways"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="top"
+                    android:hint="Force-stop selalu (1 package per baris)"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Saat trigger app aktif"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etTriggerApps"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="top"
+                    android:hint="Trigger apps (1 package per baris)"
+                    android:inputType="textMultiLine" />
+
+                <EditText
+                    android:id="@+id/etSuspendOnTrigger"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="top"
+                    android:hint="Suspend saat trigger aktif"
+                    android:inputType="textMultiLine" />
+
+                <EditText
+                    android:id="@+id/etUnsuspendOnExit"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="top"
+                    android:hint="Auto unsuspend saat trigger ditutup"
+                    android:inputType="textMultiLine" />
+
+                <EditText
+                    android:id="@+id/etForceOnTrigger"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="top"
+                    android:hint="Force-stop saat trigger aktif"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnRunNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jalankan Sekarang" />
+
+            <Button
+                android:id="@+id/btnStartWatcher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Start Watcher" />
+
+            <Button
+                android:id="@+id/btnStopWatcher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Stop Watcher" />
+
+            <Button
+                android:id="@+id/btnUsageAccess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Buka Permission Usage Access" />
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,6 +217,10 @@
             android:id="@+id/tvLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="10dp"
+            android:text="Log..."
+            android:textSize="13sp" />
             android:layout_marginTop="16dp"
             android:text="Log..." />
 

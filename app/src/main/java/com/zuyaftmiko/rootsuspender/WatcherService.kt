@@ -10,11 +10,13 @@ import android.os.Looper
 class WatcherService : Service() {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var store: ConfigStore
+    private var triggerActive = false
     private var lastHandledPackage: String? = null
 
     private val watcher = object : Runnable {
         override fun run() {
             val config = store.load()
+            val inTrigger = isAnyTriggerProcessRunning(config)
             val foreground = getForegroundPackage()
 
             RootOps.runCommands(
@@ -22,6 +24,19 @@ class WatcherService : Service() {
                     RootOps.buildForceStopCommands(config.forceAlways)
             )
 
+            if (inTrigger && !triggerActive) {
+                val cmds = RootOps.buildSuspendCommands(config.suspendOnTrigger) +
+                    RootOps.buildForceStopCommands(config.forceOnTrigger)
+                RootOps.runCommands(cmds)
+                triggerActive = true
+            }
+
+            if (!inTrigger && triggerActive) {
+                RootOps.runCommands(RootOps.buildUnsuspendCommands(config.unsuspendOnTriggerExit))
+                triggerActive = false
+            }
+
+            handler.postDelayed(this, 2000)
             if (foreground != null && config.triggerApps.contains(foreground) && foreground != lastHandledPackage) {
                 val cmds = RootOps.buildSuspendCommands(config.suspendOnTrigger) +
                     RootOps.buildForceStopCommands(config.forceOnTrigger)
@@ -50,6 +65,9 @@ class WatcherService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
 
+    private fun isAnyTriggerProcessRunning(config: WatchConfig): Boolean {
+        if (config.triggerApps.isEmpty()) return false
+        return config.triggerApps.any { pkg -> RootOps.isProcessRunning(pkg) }
     private fun getForegroundPackage(): String? {
         val usm = getSystemService(USAGE_STATS_SERVICE) as UsageStatsManager
         val end = System.currentTimeMillis()
